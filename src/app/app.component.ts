@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ToDo';
+  welcome = '  Chanikya!!!!';
+  newLine = '\n to test new Line in bind variable';
 }
