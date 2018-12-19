@@ -1,5 +1,19 @@
-<p>
-  welcome works!
 
-</p>
+<div class="container-fluid">
+  <p>
+    {{welcomeMessage}}
+  </p>
+</div>  
+<div class="container-fluid">
+  Manage ToDo's <a routerLink="/todos"> here</a>
+</div>  
+
+<div class="container-fluid">
+  <input class="btn btn-primary" type="button" value="InvokeHelloWorldRestService" (click)="invokeHelloWorldRestService()">
+</div>
+
+<div class="container-fluid" *ngIf="messageFromServer">
+  <h2>Message from Server is {{messageFromServer}}</h2>
+</div>
+
 
