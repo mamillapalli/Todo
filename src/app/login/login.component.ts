@@ -20,7 +20,22 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, private hardcodedAuthenticaion: HardcodedAuthenticationService, 
     private basicauthService: BasicauthService ) { }
 
-
+    handleJwtAuthLogin() {
+      console.log('usename is ' + this.username);
+      console.log('password is' + this.password);
+      this.basicauthService.jwtAuthenticate( this.username, this.password).subscribe(
+        successData => {
+          console.log('JWT Authentication successful');
+            this.inValid = false;
+            console.log('trying to route to welcome page');
+            this.router.navigate(['welcome', this.username ]);
+        },
+        errorData => {
+          console.log('error data is ' + errorData);
+          this.inValid = true;
+        }
+      );
+    }
 
 
   handleBasicAuthLogin() {

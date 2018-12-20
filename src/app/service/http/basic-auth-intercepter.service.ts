@@ -11,12 +11,19 @@ export class BasicAuthIntercepterService implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler) {
 
     console.log('http call being intercepted');
-
     const basicAuthHeaderString = sessionStorage.getItem('basicAuthHeaderString');
+    const Token = sessionStorage.getItem('Token');
     if ( basicAuthHeaderString !== null) {
       request = request.clone({
         setHeaders : {
           Authorization : basicAuthHeaderString
+        }
+      });
+    }
+    if ( Token !== null) {
+      request = request.clone({
+        setHeaders : {
+          Authorization : Token
         }
       });
     }
