@@ -8,9 +8,10 @@ import { BasicauthService } from './basic-auth.service';
 })
 export class RouteGuardService implements CanActivate {
 
-  constructor(private router: Router, private hardcodedAuthenticationService: HardcodedAuthenticationService, 
+  constructor(private router: Router, private hardcodedAuthenticationService: HardcodedAuthenticationService,
     private basicAuthService: BasicauthService) {  }
 
+    // hard coded authentication
   // canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
   //   console.log(this.hardcodedAuthenticationService.isUserLoggedIn());
   //   if (this.hardcodedAuthenticationService.isUserLoggedIn()) {

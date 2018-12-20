@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { BACK_END_URI } from 'src/app/app.constants';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +11,11 @@ export class HelloWorldDataService {
 
   constructor(private http: HttpClient) { }
 
-  callSpringHelloWorld(name: String) {
-    console.log('In service, calling Spring Hello World' + name);
-    return this.http.get<HelloWorldBean>(`http://localhost:8080/hwb/${name}`);
-  }
+  // below method is not used any more
+  // callSpringHelloWorld(name: String) {
+  //   console.log('In service, calling Spring Hello World' + name);
+  //   return this.http.get<HelloWorldBean>(`http://localhost:8080/hwb/${name}`);
+  // }
 
   callWelcomeService(username: String, password: String) {
     console.log(`calling Spring Hello World with basic authentication ${username}  and password ${password}`);
@@ -22,7 +24,7 @@ export class HelloWorldDataService {
     let header = new HttpHeaders({
       Authorization: basicAuthHeaderString
     });
-    return this.http.get<HelloWorldBean>(`http://localhost:8080/authenticate/${username}`,
+    return this.http.get<HelloWorldBean>(`${BACK_END_URI}/authenticate/${username}`,
     {headers: header});
   }
 
@@ -31,6 +33,3 @@ export class HelloWorldDataService {
 export class HelloWorldBean {
   constructor(public message: String) {  }
 }
-
-// Access to XMLHttpRequest at 'http://localhost:8080/hwb/Chanikya' from origin
-// 'http://localhost:4200' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.

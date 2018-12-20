@@ -1,0 +1,1 @@
+export const BACK_END_URI = 'http://localhost:8080';

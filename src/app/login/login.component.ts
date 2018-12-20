@@ -29,10 +29,10 @@ export class LoginComponent implements OnInit {
     this.basicauthService.authenticate( this.username, this.password).subscribe(
       successData => {
         console.log('success data is ' + successData);
-        if (successData.message === 'Welcome to Todo App chanikya') {
+        if (successData.message === 'authentication successful') {
           this.inValid = false;
           console.log('trying to route to welcome page');
-          this.router.navigate(['welcome', this.username , this.password]);
+          this.router.navigate(['welcome', this.username ]);
         }
       },
       errorData => {

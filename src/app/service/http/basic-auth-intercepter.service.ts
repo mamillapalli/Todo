@@ -11,14 +11,15 @@ export class BasicAuthIntercepterService implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler) {
 
     console.log('http call being intercepted');
-    const username = 'chanikya';
-    const password = 'dummy';
-    const basicAuthHeaderString = 'Basic ' + window.btoa(username + ':' + password);
-    request = request.clone({
-      setHeaders : {
-        Authorization : basicAuthHeaderString
-      }
-    });
+
+    const basicAuthHeaderString = sessionStorage.getItem('basicAuthHeaderString');
+    if ( basicAuthHeaderString !== null) {
+      request = request.clone({
+        setHeaders : {
+          Authorization : basicAuthHeaderString
+        }
+      });
+    }
     return next.handle(request);
   }
 }

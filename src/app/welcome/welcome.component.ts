@@ -11,16 +11,17 @@ export class WelcomeComponent implements OnInit {
 
   welcomeMessage = 'Welcome ';
   messageFromServer = '';
-  username = 'chanikya';
-  password = 'dummy';
+  username = 'dummy user';
+  password = 'dummy password';
   constructor(private router: ActivatedRoute, private helloWorldDataService: HelloWorldDataService) {   }
   ngOnInit() {
     this.welcomeMessage = this.welcomeMessage + this.router.snapshot.params['name'];
     console.log(this.router.snapshot.params['name']);
     console.log(this.router.snapshot.params['password']);
   }
- 
-  invokeHelloWorldRestService() {
+
+  // below method is not used any more
+  InvokeAuthenticationService() {
     console.log('Invoke Hello World rest service');
     console.log(this.helloWorldDataService.callWelcomeService(this.username, this.password));
     this.helloWorldDataService.callWelcomeService(this.username, this.password).subscribe(
@@ -37,7 +38,4 @@ export class WelcomeComponent implements OnInit {
     this.messageFromServer = response.message;
   }
 
-
-  // Access to XMLHttpRequest at 'http://localhost:8080/hwb/Chanikya' from origin
-  // 'http://localhost:4200' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
 }
